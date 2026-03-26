@@ -67,8 +67,18 @@ body {
     padding: 20px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
     font-family: 'Montserrat', sans-serif;
+    color: #8c61a8;
+    text-shadow: 0 0 2px #2d0e58, 0 0 4px #b785ff;
+    font-size: 2.5em;
+}
+
+h2 {
+    font-family: 'Lato', sans-serif;
+    color: #bb771e;
+    text-shadow: 0 0 2px #2d0e58, 0 0 4px #b785ff;
+    font-size: 1em;
 }
 
 .navbar ul {
@@ -86,7 +96,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar li:hover {
     background-color: #8a3e9bf2;
-    color: #000000;
+    color: #549ac9;
     box-shadow:
         0 0 10px rgba(183, 133, 255, 0.75),
         0 0 20px rgba(153, 92, 255, 0.65);
