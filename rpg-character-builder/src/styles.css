@@ -1,1 +1,131 @@
-/* You can add global styles to this file, and also import other style files */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&family=Montserrat:wght@700&display=swap');
+
+/* Reset default styles for common elements */
+body, header, nav, main, section, footer, img, figure, div, ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    height: 100%;
+    background-color: #111111;
+    color: #FFFFFF;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0 auto;
+    width: 75%;
+    background-color: #111111;
+    color: #FFFFFF;
+}
+
+.banner {
+    background-color: #000000;
+    color: #FFFFFF;
+    text-align: center;
+    border: 2px solid #b785ff;
+    border-radius: 12px;
+    box-shadow:
+        0 0 8px rgba(183, 133, 255, 0.65),
+        0 0 18px rgba(153, 92, 255, 0.55),
+        inset 0 0 12px rgba(183, 133, 255, 0.22);
+    animation: banner-arcane-glow 2.8s ease-in-out infinite;
+}
+
+@keyframes banner-arcane-glow {
+    0%, 100% {
+        box-shadow:
+            0 0 8px rgba(183, 133, 255, 0.65),
+            0 0 18px rgba(153, 92, 255, 0.55),
+            inset 0 0 12px rgba(183, 133, 255, 0.22);
+    }
+    50% {
+        box-shadow:
+            0 0 12px rgba(206, 167, 255, 0.85),
+            0 0 28px rgba(170, 111, 255, 0.75),
+            inset 0 0 16px rgba(206, 167, 255, 0.32);
+    }
+}
+
+.banner-img {
+    max-width: 100%;
+    height: auto;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+}
+
+.navbar {
+    flex: 0 0 200px;
+    padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li {
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    font-family: 'Lato', sans-serif;
+}
+
+.navbar li:hover {
+    background-color: #8a3e9bf2;
+    color: #000000;
+    box-shadow:
+        0 0 10px rgba(183, 133, 255, 0.75),
+        0 0 20px rgba(153, 92, 255, 0.65);
+    transform: translateX(2px);
+    cursor: pointer;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    font-family: 'Merriweather', serif;
+}
+
+.footer {
+    background-color: #000000;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #b785ff;
+    border-radius: 12px;
+    box-shadow:
+        0 0 8px rgba(183, 133, 255, 0.65),
+        0 0 18px rgba(153, 92, 255, 0.55),
+        inset 0 0 12px rgba(183, 133, 255, 0.22);
+    animation: banner-arcane-glow 2.8s ease-in-out infinite;
+    font-family: 'Lato', sans-serif;
+}
+
+.footer a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
