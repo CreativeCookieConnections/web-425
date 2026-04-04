@@ -10,5 +10,4 @@ export const routes: Routes = [
   { path: 'services/:id', component: ViewServiceComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: '**', redirectTo: 'services' }
 ];
