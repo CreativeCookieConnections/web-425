@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ServicesComponent } from './services/services.component';
-import { ViewServiceComponent } from './services/view-service/view-service.component';
+import { ViewServiceComponent } from './view-service/view-service.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'services', pathMatch: 'full' },
