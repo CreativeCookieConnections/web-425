@@ -37,7 +37,7 @@ module.exports = function (config) {
       ]
     },
     reporters: ['progress', 'kjhtml'],
-    browsers: ['Firefox'], // if you are using Chrome, change this to 'Chrome'
+    browsers: ['Chrome'], // if you are using Chrome, change this to 'Chrome' Also compatible with Firefox originally
     restartOnFileChange: true
   });
 };
