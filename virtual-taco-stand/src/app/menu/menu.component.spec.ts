@@ -8,9 +8,8 @@ describe('MenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuComponent]
-    })
-    .compileComponents();
+      imports: [MenuComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
@@ -19,5 +18,9 @@ describe('MenuComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have menu items', () => {
+    expect(component.menu.length).toBeGreaterThan(0);
   });
 });
