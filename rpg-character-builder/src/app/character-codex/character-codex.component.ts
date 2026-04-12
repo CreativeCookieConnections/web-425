@@ -157,7 +157,7 @@ export class CharacterCodexComponent {
   characterCodexList: CharacterCodex[] = [
       {
         "name": "Kira Kurai",
-        "age": 25,
+        "age": 200,
         "race": "Kurai Demon",
         "class": "Swordsman",
         "homeWorld": "Eartha",
