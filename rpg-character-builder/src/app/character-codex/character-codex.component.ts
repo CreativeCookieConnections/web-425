@@ -113,8 +113,9 @@ export interface CharacterCodex {
 
   .card img {
     width: 100%;
-    max-height: 220px;
+    height: 260px;
     object-fit: cover;
+    object-position: top center;
     border-radius: 6px;
     margin-top: 1rem;
     border: 1px solid rgba(183, 133, 255, 0.45);
@@ -161,9 +162,9 @@ export class CharacterCodexComponent {
         "class": "Swordsman",
         "homeWorld": "Eartha",
         "abilities": "Quick pull, fast reflexes, high agility, fast regeneration, eternal life and the ability to grant eternal life to others.",
-        "funfact": "Kira is one of the last known recorded Kurai Demon, a rare and powerful race that was once a full clan with powerful members. Kira has a mysterious dark path and a link of causing the extinction of the Kurai Clan. Only playing her story will unlock the truth.",
+        "funfact": "Kira is one of the last known recorded Kurai Demons, a rare and powerful race that was once a full clan with powerful members, each with unique abilities. Kira has a mysterious dark path and a link to causing the extinction of the Kurai Clan. Only by playing her story will the truth be unlocked. Kira Kurai is a conflicted soul because of her traumatic past, but that past has made her who she is today. She is a very powerful being who has lived for many years and has seen the rise and fall of many Demon Clans. Currently, due to her past, Kira was punished by the gods and was forced to live in confinement by a binding spell set by a powerful mage. Centuries later, Kira is awakened by this same mage, who has a request. Kira begins her journey with the shapeshifting mage, encounters a cursed celestial guardian, and takes on the newest threat to Eartha.",
         "morelore": "https://www.eartha.com/characters/kira-kurai",
-        "characterImage": "assets/images/characters/kira-kurai.png"
+        "characterImage": "/assets/images/characters/kiraKurai.png"
       },
 
       {
@@ -173,9 +174,9 @@ export class CharacterCodexComponent {
         "class": "Mage",
         "homeWorld": "Eartha",
         "abilities": "Shape shifting into a wolf, enhanced senses, high agility, and the ability to perform spells of binding.",
-        "funfact": "Satashee Naomi was once human who often did special quests for the gods, high ranking officials and royalty around Eartha. He was known for his intricate binding spells which can bind anything from a simple object to a powerful being. He lost his humanity once encountering a Kurai Demon named Kira Kurai. After the encounter he gained eternal life which turned him back into is adult youth looking like he is 25, and gave him the ability to shape shift into a wolf. He works side by side with Kira Kurai as a mentor, a guide, and a friend. He is on the path to change a hidden threat to Eartha while also trying to save his poor sick wife.",
+        "funfact": "Satashee Naomi was once a human who often did special quests for the gods, high-ranking officials, and royalty around Eartha. He was known for his intricate binding spells, which could bind anything from a simple object to a powerful being. Satashee was originally responsible for locking up a Kurai demon at the request of the gods. But after centuries, Eartha began to face a new threat, and he sought out the demon he had bound so long ago. As he unbound the demon, he lost his humanity. After the serious encounter, the demon also gave him eternal life, which, as a result, could turn him into a young adult once more, but she also cursed him. Along with the eternal life, he was no longer human and became a man who could shape-shift into a wolf. He came to the demon seeking help for something personal after Eartha was going through such dark times. He will journey with this demon, meet a celestial being, and try to save Eartha.",
         "morelore": "https://www.eartha.com/characters/satashee-naomi",
-        "characterImage": "assets/images/characters/satashee-naomi.png"
+        "characterImage": "/assets/images/characters/satasheeNaomi.png"
       },
 
       {
@@ -185,9 +186,9 @@ export class CharacterCodexComponent {
         "class": "Celestial Guardian",
         "homeWorld": "Drydan",
         "abilities": "At night: Immortality, high agility, enhanced senses, and the ability to perform powerful celestial magic. During the day: Appears child-like, vulnerable, high agility, wind elemental magic, purification magic, and acrobatics. Bonbori's true form is a giant nine-tailed fox with immense power.",
-        "funfact": "Bonbori Miyazaki is a legendary royal figure from the spirit world of Drydan. The spirit world is attached to Eartha, and it is a relm that Bonbori protects as a celestial guardian. She goes between the spirit world and Earthat to purify tainted beings, monsters, spirits and gods. She is a powerful being who has lived for many years as the lead of her Kitsune clan of celesitals. Recently, Bonbori has encountered a terrible threat to the spirit world and Eartha. With the spirit king gone missing, a unruly figure made their way into Drydan and cursed Bonbori. At night Bonbori is her usual self, but during the day she turns child like and more vulnerable. She will seek out the Gayan Heavenly Ward for assistance and meet Kira Kurai Demon and a Shapeshifting Mage on her journey.",
+        "funfact": "Bonbori Miyazaki is a legendary royal figure from the spirit world of Drydan. The spirit world is attached to Eartha, and it is a realm that Bonbori protects as a celestial guardian. She goes between the spirit world and Eartha to purify tainted beings, monsters, spirits, and gods. She is a powerful being who has lived for many years as the leader of her Kitsune clan of celesitals. Recently, Bonbori has encountered a terrible threat to the spirit world and Eartha. With the spirit king gone missing, an unruly figure made their way into Drydan and cursed Bonbori. At night, Bonbori is her usual self, but during the day, she turns childlike and more vulnerable. She will seek out the Gayan Heavenly Ward for assistance and meet a demon and a Shapeshifting Mage on her journey.",
         "morelore": "https://www.eartha.com/characters/bonbori-miyazaki",
-        "characterImage": "assets/images/characters/bonbori-miyazaki.png"
+        "characterImage": "/assets/images/characters/bonboriMiyazaki.png"
       },
 
       {
@@ -197,9 +198,9 @@ export class CharacterCodexComponent {
         "class": "Gayan Heavenly Ward Commander",
         "homeWorld": "Gayan Heavenly Ward",
         "abilities": "Immortality, high agility, light magic, battle tactics, weapons master, and the ability to spot the truth.",
-        "funfact": "Maya Yuki is the commander of the Gayan Heavenly Ward, a place where the heavenly race recides and even the gods. She is a powerful being who has lived many years being amongst the wars happening on Eartha. While Eartha runs, she is watching over the world and its inhabitants. She responds to the gods and their wishes. Whatever the gods command she works to achieve it. Maya Yuki is now often investigating any issues or threats happening within Eartha that poses a threat to the balance. The Spirit king has gone missing and there is a new threat to Eartha that has disrupted the balance. Maya Yuki will seek out assistance from a powerful Kurai Demon, a ShapeShifting Mage, and a Cursed Celesital Guardian to help find the cause of all these problems.",
+        "funfact": "Maya Yuki is the commander of the Gayan Heavenly Ward, a place where the heavenly race resides, and even the gods. She is a powerful being who has lived many years amongst the wars happening on Eartha. While Eartha runs, she is watching over the world and its inhabitants. She responds to the gods and their wishes. Whatever the gods command, she works to achieve it. Maya Yuki is now often investigating issues or threats within Eartha that could disrupt the balance. The Spirit King has gone missing, and there is a new threat to Eartha that has disrupted the balance. Maya Yuki will seek out assistance from a powerful Kurai Demon, a ShapeShifting Mage, and a Cursed Celestial Guardian to help find the cause of all these problems.",
         "morelore": "https://www.eartha.com/characters/maya-yuki",
-        "characterImage": "assets/images/characters/maya-yuki.png"
+        "characterImage": "/assets/images/characters/mayaYuki.png"
       },
 
       {
@@ -209,9 +210,9 @@ export class CharacterCodexComponent {
         "class": "Shapeshifting Rogue",
         "homeWorld": "Eartha",
         "abilities": "Shape shifting into any animal form, enhanced senses, high agility, and the ability to perform stealthy asssassinations.",
-        "funfact": "Mimoskei Yamamoto is a skilled shapeshifter part of Yamamoto clan, a clan of shapeshifters who are known for their stealth, crafting, and assassination skills. Mimoskei is a prince of the clan, and often is helping with training, creating unique armor, and talking on special tasks to help the clan grown and prosper. He is very close to his people, they are his family. He will encounter a powerful Kurai Demon, a Shapeshifting Mage, and a Cursed Celesital Guardian to help them on their journey.",
+        "funfact": "Mimoskei Yamamoto is a skilled shapeshifter who is part of the Yamamoto clan, a clan of natural shapeshifters who are known for their stealth, crafting, and assassination skills. Mimoskei is a prince of the clan and often helps with training, creating unique armor, and taking on special tasks to help the clan grow and prosper. He is very close to his people; they are his family. He has encountered a situation in which a girl is spotted floating to shore during a violent storm. Mimoskei saves her and discovers that she is a powerful elementalist, but her home has suffered a horrible fate. He will encounter a powerful Kurai Demon, a Shapeshifting Mage, and a Cursed Celestial Guardian to help them on their journey.",
         "morelore": "https://www.eartha.com/characters/mimoskei-yamamoto",
-        "characterImage": "assets/images/characters/mimoskei-yamamoto.png"
+        "characterImage": "/assets/images/characters/mimoskeiYamamoto.png"
       },
 
       {
@@ -221,9 +222,9 @@ export class CharacterCodexComponent {
         "class": "Witch Librarian",
         "homeWorld": "Eartha",
         "abilities": "Portal creation, spell casting, high intelligence, and the ability to read and understand any language.",
-        "funfact": "Stella Winkle is a pure mystery, she does not reveal too much about her past, but those that do know her understands that she is a polite witch who watches Eartha's largest library at the Monarch Kingdom. The library is home to a vast vareity of books and archives. Within the library their is also portals that can transport others into different locations around Eartha, to the Gayan Heavenly Ward, and even to the spirit world of Drydan. Though the access is difficult to get out of stella, she might be able to help a powerful Kurai Demon, a Shapeshifting Mage, and a Cursed Celestial Guardian on their journey.",
+        "funfact": "Stella Winkle is a complete mystery; she does not reveal much about her past, but those who know her understand that she is a polite witch who watches over Eartha's largest library in the Monarch Kingdom. The library is home to a wide variety of books and archives. Within the library, there are also portals that can transport others into different locations around Eartha, to the Gayan Heavenly Ward, and even to the spirit world of Drydan. Though the access is difficult to get out of Stella, she might be able to help a powerful Kurai Demon, a Shapeshifting Mage, and a Cursed Celestial Guardian on their journey.",
         "morelore": "https://www.eartha.com/characters/stella-winkle",
-        "characterImage": "assets/images/characters/stella-winkle.png"
+        "characterImage": "/assets/images/characters/stellaWinkle.png"
       },
 
       {
@@ -233,9 +234,9 @@ export class CharacterCodexComponent {
         "class": "Time Manipulator, Guardian of Time, Keeper of Life and Death",
         "homeWorld": "Underworld",
         "abilities": "Time manipulation, immortality, high intelligence, and the ability to control life and death.",
-        "funfact": "Shi Toki is one of the oldest and talented Grim Reapers in the Underworld. The Underworld is a relam connected to Eartha, and it is the pure opposite of the Gayan Heavenly Ward. Instead of being the beginning of life, it is a place of end. Shi Toki is a guardian, a servant, a time keeper, and a guide to souls that are passing on. He is a powerful being who has lived for many years, and has seen the rise and fall of many civilizations. He is often watching over Eartha and its inhabitants, and he is aware of the new threat that has disrupted the balance of Eartha. He might know something about the Spirit King's disappearance, and he might be able to help a powerful Kurai Demon, a Shapeshifting Mage, and a Cursed Celestial Guardian to their journey.",
+        "funfact": "Shi Toki is one of the oldest and most talented Grim Reapers in the Underworld. The Underworld is a realm connected to Eartha and the pure opposite of the Gayan Heavenly Ward. Instead of being the place of beginnings, it is a place of the end. Shi Toki is a guardian, a servant, a time keeper, and a guide to souls that are passing on. He is a powerful being who has lived for many years and has seen the rise and fall of many civilizations. He is often watching over Eartha and its inhabitants, and he is aware of the new threat that has disrupted Eartha's balance. He might know something about the Spirit King's disappearance, and he might be able to help a powerful Kurai Demon, a Shapeshifting Mage, and a Cursed Celestial Guardian with their journey.",
         "morelore": "https://www.eartha.com/characters/shi-toki",
-        "characterImage": "assets/images/characters/shi-toki.png"
+        "characterImage": "/assets/images/characters/shiToki.png"
       },
 
       {
@@ -245,9 +246,9 @@ export class CharacterCodexComponent {
         "class": "Multi-Elemental Mage",
         "homeWorld": "Eartha",
         "abilities": "Control over multiple elements (fire, water, earth, air), high intelligence, and the ability to perform powerful elemental spells.",
-        "funfact": "Nami Hoshizora is a talented young mage who has the rare ability to control multiple elements. She would be a prodigy in the world of magic, but she has been spending most of her time on a island surrounded by water with her village. She has a chieftan father, a mother who passed away, and a whole village of people who are like family. Together, the village works together to fish, trade with other villages on Eartha, and protect each other. Nami has a lot of talent for Elemental Magic, but she has not been been able to use it to its full potential. Recently, her island was invaded by strange people in dark cloaks. They caused a powerful storm that ripped through the island and caused most of its inhabitants to be taken away or flee. Nami barely escaped and runs into a shape shifter named Mimoskei Yamamoto. He saves her life and both encounter a powerful Kurai Demon, a Cursed Celestial Guardian, and a Shapeshifting Mage. Together they will try to find out who is behind the attack on Nami's island, and if it is connected to the new threat on Eartha.",
+        "funfact": "Nami Hoshizora is a talented young mage who has the rare ability to control multiple elements. She would be a prodigy in the world of magic, but she has been spending most of her time on an island surrounded by water with her village. She has a chieftain father, a mother who passed away, and a whole village of people who are like family. Together, the village works to fish, trade with other villages on Eartha, and protect each other. Nami has a lot of talent for Elemental Magic, but she has not been able to use it to its full potential. Recently, her island was invaded by strange people in dark cloaks. They caused a powerful storm that ripped through the island, taking most of its inhabitants away or forcing them to flee. Nami barely escaped and ran into a shape-shifter. He saves her life, and they eventually both encounter a powerful Kurai Demon, a Cursed Celestial Guardian, and a Shapeshifting Mage. Together, they will try to find out who is behind the attack on Nami's island and if it is connected to the new threat on Eartha.",
         "morelore": "https://www.eartha.com/characters/nami-hoshizora",
-        "characterImage": "assets/images/characters/nami-hoshizora.png"
+        "characterImage": "/assets/images/characters/namiHoshizora.png"
       },
 
       {
@@ -257,9 +258,9 @@ export class CharacterCodexComponent {
         "class": "Gayan-Human Hybrid Warrior and Bard",
         "homeWorld": "Eartha",
         "abilities": "Enhanced strength, agility, and magical abilities inherited from both Gayan and Human lineage. Can also inspire and lead others through her bardic talents.",
-        "funfact": "Celine Arashi is a unique hybrid warrior who combines the strengths of both Gayan and Human heritage. She is known for her exceptional combat skills and her ability to inspire and lead others through her bardic talents. She is often spotted in taverns, shops, and even on the battlefield, where she uses her charisma and combat prowess to rally allies and turn the tide of battle. Celine has a mysterious past, and is known for her wide range of connections across each relm. She has a lot of information to share for the right price. She will encounter a powerful Kurai Demon, a Shapeshifting Mage, and a Cursed Celestial Guardian to help them on their journey.",
+        "funfact": "Celine Arashi is a unique hybrid warrior who combines the strengths of both Gayan and Human heritage. She is known for her exceptional combat skills and her ability to inspire and lead others through her bardic talents. She is often spotted in taverns, shops, and even on the battlefield, where she uses her charisma and combat prowess to rally allies and turn the tide of battle. Celine has a mysterious past and is known for her wide-ranging connections across all realms. She has a lot of information to share for the right price. She will encounter a powerful Kurai Demon, a Shapeshifting Mage, and a Cursed Celestial Guardian to help them on their journey.",
         "morelore": "https://www.eartha.com/characters/celine-arashi",
-        "characterImage": "assets/images/characters/celine-arashi.png"
+        "characterImage": "/assets/images/characters/celineArashi.png"
       },
 
       {
@@ -271,7 +272,7 @@ export class CharacterCodexComponent {
         "abilities": "Skilled in combat, exploration, and treasure hunting. Has a keen eye for hidden secrets and traps, and is adept at navigating dangerous environments.",
         "funfact": "Riku Takahashi is a daring adventurer and treasure hunter who has made a name for himself by exploring ancient ruins, uncovering hidden secrets, and braving dangerous environments. He is known for his resourcefulness, quick thinking, and ability to navigate treacherous terrain. Riku has a knack for finding rare artifacts and treasures, and he often takes on risky quests that others would shy away from. He will encounter a powerful Kurai Demon, a Shapeshifting Mage, and a Cursed Celestial Guardian to help them on their journey.",
         "morelore": "https://www.eartha.com/characters/riku-takahashi",
-        "characterImage": "assets/images/characters/riku-takahashi.png"
+        "characterImage": "/assets/images/characters/rikuTakahashi.png"
       }
     ];
 }
