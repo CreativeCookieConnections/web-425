@@ -48,7 +48,7 @@ export interface CharacterCodex {
   `,
   styles: [`
   .codex-page {
-    padding: 1rem;
+    padding: 1rem 1rem 3rem;
     color: #ffffff;
   }
 
@@ -145,7 +145,7 @@ export interface CharacterCodex {
 
   @media (max-width: 768px) {
     .codex-page {
-      padding: 0.5rem 0;
+      padding: 0.5rem 0 2rem;
     }
 
     .premade-character-list {
