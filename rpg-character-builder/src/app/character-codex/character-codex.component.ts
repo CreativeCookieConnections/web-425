@@ -20,7 +20,7 @@ export interface CharacterCodex {
   template: `
     <section class="codex-page">
       <h1>Character Codex</h1>
-      <p>
+      <p class="codex-intro">
         Explore our selections of characters from our main story line from the world of Eartha and
         beyond. Choose to learn more about their background, their abilities, and their unique
         characteristics. Join their stories to discover secrets, earn rewards, and unlock new
@@ -49,11 +49,19 @@ export interface CharacterCodex {
   styles: [`
   .codex-page {
     padding: 1rem;
+    color: #ffffff;
+  }
+
+  .codex-intro {
+    max-width: 70ch;
+    margin: 0 0 1.5rem;
+    color: #e8def6;
+    line-height: 1.7;
   }
 
   .premade-character-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     list-style-type: none;
     padding: 0;
@@ -61,16 +69,46 @@ export interface CharacterCodex {
   }
 
   .premade-character-profile {
-    flex: 1 1 calc(33.333% - 20px);
-    min-width: 250px;
+    min-width: 0;
   }
 
   .card {
     height: 100%;
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(180deg, rgba(23, 10, 41, 0.96) 0%, rgba(10, 10, 18, 0.98) 100%);
+    border: 1px solid #b785ff;
+    border-radius: 12px;
+    box-shadow:
+      0 0 10px rgba(183, 133, 255, 0.35),
+      0 0 20px rgba(153, 92, 255, 0.2),
+      inset 0 0 12px rgba(183, 133, 255, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: #d2b0ff;
+    box-shadow:
+      0 0 14px rgba(183, 133, 255, 0.55),
+      0 0 28px rgba(153, 92, 255, 0.3),
+      inset 0 0 16px rgba(183, 133, 255, 0.14);
+  }
+
+  .card h3 {
+    margin: 0 0 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #d7b6ff;
+    text-shadow: 0 0 2px #2d0e58, 0 0 6px rgba(183, 133, 255, 0.6);
+  }
+
+  .card p {
+    margin: 0 0 0.75rem;
+    color: #f4ecff;
+    line-height: 1.55;
+  }
+
+  .card strong {
+    color: #bb771e;
   }
 
   .card img {
@@ -78,12 +116,38 @@ export interface CharacterCodex {
     max-height: 220px;
     object-fit: cover;
     border-radius: 6px;
-    margin-top: 0.75rem;
+    margin-top: 1rem;
+    border: 1px solid rgba(183, 133, 255, 0.45);
+    background-color: #000000;
   }
 
   .card a {
     display: inline-block;
     margin-top: 0.5rem;
+    padding: 0.55rem 1rem;
+    border-radius: 6px;
+    background-color: #8a3e9b;
+    border: 1px solid #b785ff;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    box-shadow: 0 0 6px rgba(183, 133, 255, 0.35);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card a:hover {
+    background-color: #6b2e7a;
+    box-shadow: 0 0 10px rgba(183, 133, 255, 0.65);
+  }
+
+  @media (max-width: 768px) {
+    .codex-page {
+      padding: 0.5rem 0;
+    }
+
+    .card {
+      padding: 16px;
+    }
   }
   `
   ]
@@ -92,7 +156,7 @@ export class CharacterCodexComponent {
   characterCodexList: CharacterCodex[] = [
       {
         "name": "Kira Kurai",
-        "age": 19,
+        "age": 25,
         "race": "Kurai Demon",
         "class": "Swordsman",
         "homeWorld": "Eartha",
