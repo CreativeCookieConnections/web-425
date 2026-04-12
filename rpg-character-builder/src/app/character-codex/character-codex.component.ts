@@ -31,6 +31,7 @@ export interface CharacterCodex {
         @for (item of characterCodexList; track item.name) {
           <li class="premade-character-profile">
             <article class="card character-card">
+              <img [src]="item.characterImage" [alt]="item.name + ' image'">
               <h3>{{ item.name }}</h3>
               <p><strong>Age:</strong> {{ item.age }}</p>
               <p><strong>Race:</strong> {{ item.race }}</p>
@@ -39,7 +40,6 @@ export interface CharacterCodex {
               <p><strong>Abilities:</strong> {{ item.abilities }}</p>
               <p><strong>Fun Fact:</strong> {{ item.funfact }}</p>
               <a [href]="item.morelore" target="_blank" rel="noopener noreferrer">Learn More</a>
-              <img [src]="item.characterImage" [alt]="item.name + ' image'">
             </article>
           </li>
         }
@@ -62,7 +62,8 @@ export interface CharacterCodex {
   .premade-character-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    column-gap: 1.75rem;
+    row-gap: 2.75rem;
     list-style-type: none;
     padding: 0;
     margin: 1.5rem 0 0;
@@ -86,11 +87,11 @@ export interface CharacterCodex {
   }
 
   .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
     border-color: #d2b0ff;
     box-shadow:
       0 0 14px rgba(183, 133, 255, 0.55),
-      0 0 28px rgba(153, 92, 255, 0.3),
+      0 0 20px rgba(153, 92, 255, 0.22),
       inset 0 0 16px rgba(183, 133, 255, 0.14);
   }
 
@@ -117,7 +118,8 @@ export interface CharacterCodex {
     object-fit: cover;
     object-position: top center;
     border-radius: 6px;
-    margin-top: 1rem;
+    display: block;
+    margin: 0 0 1rem;
     border: 1px solid rgba(183, 133, 255, 0.45);
     background-color: #000000;
   }
@@ -144,6 +146,10 @@ export interface CharacterCodex {
   @media (max-width: 768px) {
     .codex-page {
       padding: 0.5rem 0;
+    }
+
+    .premade-character-list {
+      row-gap: 1.75rem;
     }
 
     .card {
