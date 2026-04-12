@@ -175,7 +175,7 @@ export class CharacterCodexComponent {
 
       {
         "name": "Satashee Naomi",
-        "age": 60,
+        "age": 300,
         "race": "Once Human, now a shape shifter",
         "class": "Mage",
         "homeWorld": "Eartha",
