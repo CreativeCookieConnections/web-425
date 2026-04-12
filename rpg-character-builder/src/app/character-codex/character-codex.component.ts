@@ -1,3 +1,6 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+
 export interface CharacterCodex {
   name: string;
   age: number;
@@ -6,70 +9,87 @@ export interface CharacterCodex {
   homeWorld: string;
   abilities: string;
   funfact: string;
-  morelore: LinkStyle;
-  characterImage: ImageBitmap;
+  morelore: string;
+  characterImage: string;
 }
-
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-character-codex',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div>
-    <h1> Character Codex </h1>
-    <p> Explore our selections of characters from our main story line from the world of Eartha and beyond. Choose to learn more about their background, their abilities, and their unique characteristics. Join their stories to discover secrets, earn rewards, and unlock new adventures. </p>
+    <section class="codex-page">
+      <h1>Character Codex</h1>
+      <p>
+        Explore our selections of characters from our main story line from the world of Eartha and
+        beyond. Choose to learn more about their background, their abilities, and their unique
+        characteristics. Join their stories to discover secrets, earn rewards, and unlock new
+        adventures.
+      </p>
 
-    <ul class="premade-character-list">
-      @for (item of characterCodexList; track by: item.name) {
-        <li class="premade-character-profile">
-          <div class="card">
-            <h3>{{ profile.name }}</h3>
-            <p>{{ profile.age }}</p>
-            <p>{{ profile.race }}</p>
-            <p>{{ profile.class }}</p>
-            <p>{{ profile.homeWorld }}</p>
-            <p>{{ profile.abilities }}</p>
-            <p>{{ profile.funfact }}</p>
-            <a href="{{ profile.morelore }}"> Learn More </a>
-            <img src="{{ profile.characterImage }}" alt="{{ profile.name }}'s image">
-          </div>
-        </li>
+      <ul class="premade-character-list">
+        @for (item of characterCodexList; track item.name) {
+          <li class="premade-character-profile">
+            <article class="card character-card">
+              <h3>{{ item.name }}</h3>
+              <p><strong>Age:</strong> {{ item.age }}</p>
+              <p><strong>Race:</strong> {{ item.race }}</p>
+              <p><strong>Class:</strong> {{ item.class }}</p>
+              <p><strong>Home World:</strong> {{ item.homeWorld }}</p>
+              <p><strong>Abilities:</strong> {{ item.abilities }}</p>
+              <p><strong>Fun Fact:</strong> {{ item.funfact }}</p>
+              <a [href]="item.morelore" target="_blank" rel="noopener noreferrer">Learn More</a>
+              <img [src]="item.characterImage" [alt]="item.name + ' image'">
+            </article>
+          </li>
         }
-    </ul>
-    </div>
+      </ul>
+    </section>
   `,
   styles: [`
-  .profile-container {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  padding: 0;
+  .codex-page {
+    padding: 1rem;
+  }
+
+  .premade-character-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
   }
 
   .premade-character-profile {
-  flex: 0 1 calc(33.333% - 20px);
-  margin: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #fff;
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
   }
 
   .card {
-  padding: 20px;
-  background-color: #f9f9f9;
+    height: 100%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-top: 0.75rem;
+  }
+
+  .card a {
+    display: inline-block;
+    margin-top: 0.5rem;
   }
   `
   ]
 })
 export class CharacterCodexComponent {
-  characterCodexList: CharacterCodex[];
-  
-  constructor() {
-    this.characterCodexList = [
+  characterCodexList: CharacterCodex[] = [
       {
         "name": "Kira Kurai",
         "age": 19,
@@ -188,11 +208,6 @@ export class CharacterCodexComponent {
         "funfact": "Riku Takahashi is a daring adventurer and treasure hunter who has made a name for himself by exploring ancient ruins, uncovering hidden secrets, and braving dangerous environments. He is known for his resourcefulness, quick thinking, and ability to navigate treacherous terrain. Riku has a knack for finding rare artifacts and treasures, and he often takes on risky quests that others would shy away from. He will encounter a powerful Kurai Demon, a Shapeshifting Mage, and a Cursed Celestial Guardian to help them on their journey.",
         "morelore": "https://www.eartha.com/characters/riku-takahashi",
         "characterImage": "assets/images/characters/riku-takahashi.png"
-      },
-
-
-
-      ];
-    }
-
+      }
+    ];
 }
