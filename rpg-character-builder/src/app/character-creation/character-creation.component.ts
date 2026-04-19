@@ -51,12 +51,32 @@ interface CharacterProfile {
         }
 
         <label for="gender">Gender</label>
-        <select id="gender" name="gender" required [(ngModel)]="character.gender">
+        <select
+          id="gender"
+          name="genderSelection"
+          required
+          [(ngModel)]="selectedGender"
+          (ngModelChange)="onGenderSelectionChange()"
+        >
           <option value="" disabled>Select gender</option>
           @for (option of genderOptions; track option) {
             <option [value]="option">{{ option }}</option>
           }
+          <option value="Custom">Custom</option>
         </select>
+
+        @if (selectedGender === 'Custom') {
+          <label for="customGender">Custom Gender</label>
+          <input
+            id="customGender"
+            name="customGender"
+            type="text"
+            required
+            [(ngModel)]="customGender"
+            (ngModelChange)="onCustomGenderChange()"
+            placeholder="Type your custom gender"
+          >
+        }
 
         <label for="race">Race</label>
         <select
@@ -283,9 +303,11 @@ export class CharacterCreationComponent {
   character: CharacterProfile = this.getDefaultCharacter();
   createdCharacters: CharacterProfile[] = [];
   selectedName = '';
+  selectedGender = '';
   selectedRace = '';
   selectedClass = '';
   customName = '';
+  customGender = '';
   customRace = '';
   customClass = '';
 
@@ -354,6 +376,7 @@ export class CharacterCreationComponent {
 
   customizeCharacter(): void {
     this.applySelectedName();
+    this.applySelectedGender();
     this.applySelectedRaceAndClass();
 
     if (!this.character.characterId) {
@@ -374,6 +397,8 @@ export class CharacterCreationComponent {
 
     this.selectedName = this.character.name;
     this.customName = '';
+    this.selectedGender = this.genderOptions.includes(this.character.gender) ? this.character.gender : 'Custom';
+    this.customGender = this.selectedGender === 'Custom' ? this.character.gender : '';
     this.selectedRace = this.raceOptions.includes(this.character.race) ? this.character.race : 'Custom';
     this.customRace = this.selectedRace === 'Custom' ? this.character.race : '';
     this.selectedClass = this.classOptions.includes(this.character.class) ? this.character.class : 'Custom';
@@ -386,9 +411,11 @@ export class CharacterCreationComponent {
     this.character.race = this.randomRaces[Math.floor(Math.random() * this.randomRaces.length)];
     this.character.class = this.randomClasses[Math.floor(Math.random() * this.randomClasses.length)];
     this.selectedName = 'Custom';
+    this.selectedGender = this.character.gender;
     this.selectedRace = this.character.race;
     this.selectedClass = this.character.class;
     this.customName = this.character.name;
+    this.customGender = '';
     this.customRace = '';
     this.customClass = '';
   }
@@ -396,9 +423,11 @@ export class CharacterCreationComponent {
   resetForm(form?: NgForm): void {
     this.character = this.getDefaultCharacter();
     this.selectedName = '';
+    this.selectedGender = '';
     this.selectedRace = '';
     this.selectedClass = '';
     this.customName = '';
+    this.customGender = '';
     this.customRace = '';
     this.customClass = '';
     form?.resetForm(this.character);
@@ -422,6 +451,8 @@ export class CharacterCreationComponent {
     this.character.gender = selectedCharacter.gender;
     this.character.race = selectedCharacter.race;
     this.character.class = selectedCharacter.class;
+    this.selectedGender = this.genderOptions.includes(selectedCharacter.gender) ? selectedCharacter.gender : 'Custom';
+    this.customGender = this.selectedGender === 'Custom' ? selectedCharacter.gender : '';
     this.selectedRace = this.raceOptions.includes(selectedCharacter.race) ? selectedCharacter.race : 'Custom';
     this.customRace = this.selectedRace === 'Custom' ? selectedCharacter.race : '';
     this.selectedClass = this.classOptions.includes(selectedCharacter.class) ? selectedCharacter.class : 'Custom';
@@ -431,6 +462,22 @@ export class CharacterCreationComponent {
   onCustomNameChange(): void {
     if (this.selectedName === 'Custom') {
       this.character.name = this.customName.trim();
+    }
+  }
+
+  onGenderSelectionChange(): void {
+    if (this.selectedGender === 'Custom') {
+      this.character.gender = this.customGender.trim();
+      return;
+    }
+
+    this.customGender = '';
+    this.character.gender = this.selectedGender;
+  }
+
+  onCustomGenderChange(): void {
+    if (this.selectedGender === 'Custom') {
+      this.character.gender = this.customGender.trim();
     }
   }
 
@@ -485,6 +532,14 @@ export class CharacterCreationComponent {
       this.character.name = this.customName.trim();
     } else if (this.selectedName) {
       this.character.name = this.selectedName;
+    }
+  }
+
+  private applySelectedGender(): void {
+    if (this.selectedGender === 'Custom') {
+      this.character.gender = this.customGender.trim();
+    } else if (this.selectedGender) {
+      this.character.gender = this.selectedGender;
     }
   }
 
