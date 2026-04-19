@@ -23,14 +23,32 @@ interface CharacterProfile {
 
       <form #characterForm="ngForm" (ngSubmit)="customizeCharacter()" class="character-form">
         <label for="name">Name</label>
-        <input
+        <select
           id="name"
-          name="name"
-          type="text"
+          name="nameSelection"
           required
-          [(ngModel)]="character.name"
-          placeholder="Enter character name"
+          [(ngModel)]="selectedName"
+          (ngModelChange)="onNameSelectionChange()"
         >
+          <option value="" disabled>Select a premade character or custom</option>
+          @for (option of codexCharacters; track option.name) {
+            <option [value]="option.name">{{ option.name }}</option>
+          }
+          <option value="Custom">Custom</option>
+        </select>
+
+        @if (selectedName === 'Custom') {
+          <label for="customName">Custom Name</label>
+          <input
+            id="customName"
+            name="customName"
+            type="text"
+            required
+            [(ngModel)]="customName"
+            (ngModelChange)="onCustomNameChange()"
+            placeholder="Type your custom character name"
+          >
+        }
 
         <label for="gender">Gender</label>
         <select id="gender" name="gender" required [(ngModel)]="character.gender">
@@ -264,8 +282,10 @@ interface CharacterProfile {
 export class CharacterCreationComponent {
   character: CharacterProfile = this.getDefaultCharacter();
   createdCharacters: CharacterProfile[] = [];
+  selectedName = '';
   selectedRace = '';
   selectedClass = '';
+  customName = '';
   customRace = '';
   customClass = '';
 
@@ -310,11 +330,17 @@ export class CharacterCreationComponent {
     'Necromancer'
   ];
 
-  private readonly codexCharacters: Array<Pick<CharacterProfile, 'name' | 'gender' | 'race' | 'class'>> = [
+  readonly codexCharacters: Array<Pick<CharacterProfile, 'name' | 'gender' | 'race' | 'class'>> = [
     { name: 'Kira Kurai', gender: 'Female', race: 'Kurai Demon', class: 'Swordsman' },
     { name: 'Satashee Naomi', gender: 'Male', race: 'Shapeshifter', class: 'Mage' },
     { name: 'Bonbori Miyazaki', gender: 'Female', race: 'Kitsune', class: 'Celestial Guardian' },
-    { name: 'Maya Yuki', gender: 'Female', race: 'Gayan', class: 'Heavenly Ward Commander' }
+    { name: 'Maya Yuki', gender: 'Female', race: 'Gayan', class: 'Heavenly Ward Commander' },
+    { name: 'Mimoskei Yamamoto', gender: 'Male', race: 'Shapeshifter', class: 'Shapeshifting Rogue' },
+    { name: 'Stella Winkle', gender: 'Female', race: 'Secret', class: 'Witch Librarian' },
+    { name: 'Shi Toki', gender: 'Male', race: 'Grim Reaper of Time', class: 'Time Manipulator, Guardian of Time, Keeper of Life and Death' },
+    { name: 'Nami Hoshizora', gender: 'Female', race: 'Elementalist', class: 'Multi-Elemental Mage' },
+    { name: 'Celine Arashi', gender: 'Female', race: 'Half-Gayan, Half-Human', class: 'Gayan-Human Hybrid Warrior and Bard' },
+    { name: 'Riku Takahashi', gender: 'Male', race: 'Human', class: 'Adventurer and Treasure Hunter' }
   ];
 
   private readonly randomGenders = ['Male', 'Female', 'Other'];
@@ -327,6 +353,7 @@ export class CharacterCreationComponent {
   }
 
   customizeCharacter(): void {
+    this.applySelectedName();
     this.applySelectedRaceAndClass();
 
     if (!this.character.characterId) {
@@ -345,6 +372,8 @@ export class CharacterCreationComponent {
       ...selectedCharacter
     };
 
+    this.selectedName = this.character.name;
+    this.customName = '';
     this.selectedRace = this.raceOptions.includes(this.character.race) ? this.character.race : 'Custom';
     this.customRace = this.selectedRace === 'Custom' ? this.character.race : '';
     this.selectedClass = this.classOptions.includes(this.character.class) ? this.character.class : 'Custom';
@@ -356,19 +385,53 @@ export class CharacterCreationComponent {
     this.character.gender = this.randomGenders[Math.floor(Math.random() * this.randomGenders.length)];
     this.character.race = this.randomRaces[Math.floor(Math.random() * this.randomRaces.length)];
     this.character.class = this.randomClasses[Math.floor(Math.random() * this.randomClasses.length)];
+    this.selectedName = 'Custom';
     this.selectedRace = this.character.race;
     this.selectedClass = this.character.class;
+    this.customName = this.character.name;
     this.customRace = '';
     this.customClass = '';
   }
 
   resetForm(form?: NgForm): void {
     this.character = this.getDefaultCharacter();
+    this.selectedName = '';
     this.selectedRace = '';
     this.selectedClass = '';
+    this.customName = '';
     this.customRace = '';
     this.customClass = '';
     form?.resetForm(this.character);
+  }
+
+  onNameSelectionChange(): void {
+    if (this.selectedName === 'Custom') {
+      this.character.name = this.customName.trim();
+      return;
+    }
+
+    const selectedCharacter = this.codexCharacters.find((item) => item.name === this.selectedName);
+
+    if (!selectedCharacter) {
+      this.character.name = this.selectedName;
+      return;
+    }
+
+    this.customName = '';
+    this.character.name = selectedCharacter.name;
+    this.character.gender = selectedCharacter.gender;
+    this.character.race = selectedCharacter.race;
+    this.character.class = selectedCharacter.class;
+    this.selectedRace = this.raceOptions.includes(selectedCharacter.race) ? selectedCharacter.race : 'Custom';
+    this.customRace = this.selectedRace === 'Custom' ? selectedCharacter.race : '';
+    this.selectedClass = this.classOptions.includes(selectedCharacter.class) ? selectedCharacter.class : 'Custom';
+    this.customClass = this.selectedClass === 'Custom' ? selectedCharacter.class : '';
+  }
+
+  onCustomNameChange(): void {
+    if (this.selectedName === 'Custom') {
+      this.character.name = this.customName.trim();
+    }
   }
 
   onRaceSelectionChange(): void {
@@ -414,6 +477,14 @@ export class CharacterCreationComponent {
       this.character.class = this.customClass.trim();
     } else if (this.selectedClass) {
       this.character.class = this.selectedClass;
+    }
+  }
+
+  private applySelectedName(): void {
+    if (this.selectedName === 'Custom') {
+      this.character.name = this.customName.trim();
+    } else if (this.selectedName) {
+      this.character.name = this.selectedName;
     }
   }
 
