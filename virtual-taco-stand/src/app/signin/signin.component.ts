@@ -19,7 +19,7 @@ import { AuthService } from '../auth.service';
 
         <label for="email">Email:</label>
         <input formControlName="email" type="email" id="email" name="email">
-        @if (signinForm.controls['email'].touched&&signinForm.contorls['email'].hasError('required')) {
+        @if (signinForm.controls['email'].touched&&signinForm.controls['email'].hasError('required')) {
           <small class="error">Email is required</small>
         }
         @if(signinForm.controls['email'].touched&&signinForm.controls['email'].hasError('email')) {

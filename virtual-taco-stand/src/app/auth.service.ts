@@ -20,7 +20,7 @@ export class AuthService {
 
   constructor(private cookieService: CookieService, private router: Router) {
     this.users = [
-      { empId: 1007, email: 'wizardlywand@hogwarts', password: 'Alohomora123' },
+      { empId: 1007, email: 'wizardlywand@hogwarts.com', password: 'Alohomora123' },
       { empId: 1008, email: 'quidditchqueen@hogwarts.com', password: 'Quaxle22'},
       { empId: 1009, email: 'potionmaster@hogwarts.com', password: 'Polyjuice456' },
       { empId: 1010, email: 'mugglemania@hogwarts.com', password: 'Dementor0' },
