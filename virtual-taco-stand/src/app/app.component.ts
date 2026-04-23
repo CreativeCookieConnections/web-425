@@ -19,6 +19,7 @@ import { AuthService } from './auth.service';
         <button (click)="signout()">Sign Out</button>
         } @else {
         <a routerLink="/signin" class="sign-in-link">Sign In</a>
+        }
       </div>
       
       <main class="main-content">
