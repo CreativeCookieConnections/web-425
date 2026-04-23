@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       </header>
 
       <div class="sign-in-container">
+        @if (email) {
+        <p>Welcome, {{ email }}!</p>
+        <button (click)="signout()">Sign Out</button>
+        } @else {
         <a routerLink="/signin" class="sign-in-link">Sign In</a>
       </div>
       
@@ -35,12 +41,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 
       <footer class="footer">
         <nav class="footer-nav">
-          <a routerLink="/">Home</a>
-          <a routerLink="/menu">Menu</a>
-          <a routerLink="/order">Order</a>
-          <a routerLink="/daily-specials">Daily Specials</a>
+          <a routerLink="/">Home</a> |
+          <a routerLink="/menu">Menu</a> |
+          <a routerLink="/order">Order</a> |
+          <a routerLink="/daily-specials">Daily Specials</a> |
           <a routerLink="/feedback">Feedback</a>
-          <a routerLink="/signin">Sign In</a>
         </nav>
         <p>&copy; 2024 Virtual Taco Stand.</p>
       </footer>
@@ -67,7 +72,21 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   ]
 })
 
-export class AppComponent {
-  
+export class AppComponent { email?: string;
+
+  constructor(private authService: AuthService, private cookieService: CookieService) {
+  }
+
+  ngOnInit() {
+    this.authService.getAuthState().subscribe((isAuth) => {
+      if(isAuth) {
+        this.email = this.cookieService.get('session_user');
+      }
+    });
+  }
+
+  signout() {
+    this.authService.signout();
+  }
 }
 
