@@ -40,30 +40,67 @@ import { AuthService } from '../auth.service';
       </form>
     </div>
   `,
-  styles: ``
+  styles: `
+  
+  .signin-form-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  }
+  
+  .signin-form {
+  flex: 1;
+  margin-right: 20px;
+  }
+  
+  label, input {
+  display: block;
+  margin-bottom: 5px;
+  }
+
+  input, input[type="submit"] {
+  padding: 8px; 
+  box-sizing: border-box;
+  }
+
+  input[type="email"], input[type="password"] {
+  width: 100%;
+  }
+
+  input[type="submit"] {
+  margin-top: 10px;
+  float: right;
+  }
+
+  .error {
+  color: red;
+  padding: 5px;
+  }
+`
+
 })
 export class SigninComponent {
-  signinForm: FormGroup;
+  signinForm: FormGroup = this.fb.group({
+    email: [null, Validators.compose([Validators.required, Validators.email])],
+    password: [null, Validators.compose([Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d).{8,}$/)])]
+  });
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
-  ) {
-    this.signinForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d).{8,}$/)]]
-    });
-  }
+    private route: ActivatedRoute) {
+    }
 
-  signin() {
-    if (this.signinForm.valid) {
-      const { email, password } = this.signinForm.value;
-      const isSignedIn = this.authService.signin(email, password);
-      if (isSignedIn) {
-        this.router.navigate(['/dashboard']);
-      }
+    signin() {
+      const email = this.signinForm.controls['email'].value;
+      const password = this.signinForm.controls['password'].value;
+
+      if(this.authService.signin(email, password)) {
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+        this.router.navigate([returnUrl]);
+      } else {
+        alert('Invalid email or password. Please try again.');
     }
   }
 }
