@@ -15,8 +15,8 @@ import { AuthService } from './auth.service';
 
       <div class="sign-in-container">
         @if(email) {
-          <p> Welcome, {{ email }}!</p>
-          <button (click) ="signout()">Sign Out</button>}
+          <p class="welcome-text">Welcome, <span>{{ email }}</span>!</p>
+          <button class="signout-btn" (click)="signout()">Sign Out</button>
         } @else {
         <a routerLink="/signin" class="sign-in-link">Sign In</a>
         }
@@ -90,6 +90,35 @@ import { AuthService } from './auth.service';
     .sign-in-link:hover {
       background-color: #6b2e7a;
       box-shadow: 0 0 10px rgba(183, 133, 255, 0.75), 0 0 22px rgba(153, 92, 255, 0.65);
+    }
+    .welcome-text {
+      display: inline;
+      font-family: 'Lato', sans-serif;
+      color: #ccbbee;
+      font-size: 0.9em;
+      margin-right: 10px;
+    }
+    .welcome-text span {
+      color: #b785ff;
+      font-weight: 700;
+      text-shadow: 0 0 4px rgba(183, 133, 255, 0.6);
+    }
+    .signout-btn {
+      display: inline-block;
+      padding: 0.4rem 0.9rem;
+      background-color: transparent;
+      color: #ccbbee;
+      border: 1px solid #4a2a6a;
+      border-radius: 4px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85em;
+      cursor: pointer;
+      transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .signout-btn:hover {
+      border-color: #b785ff;
+      color: #ffffff;
+      box-shadow: 0 0 6px rgba(183, 133, 255, 0.4);
     }
     `
   ]

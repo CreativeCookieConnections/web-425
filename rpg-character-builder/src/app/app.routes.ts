@@ -12,6 +12,8 @@ import { GuildComponent } from './guild/guild.component';
 import { NewsComponent } from './news/news.component';
 import { ShopComponent } from './shop/shop.component';
 import { SupportComponent } from './support/support.component';
+import { authGuard } from './auth.guard';
+
 
 
 export const routes: Routes = [
@@ -20,7 +22,7 @@ export const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'game', component: GameComponent },
   { path: 'character-codex', component: CharacterCodexComponent },
-  { path: 'character-creation', component: CharacterCreationComponent },
+  { path: 'character-creation', component: CharacterCreationComponent, canActivate: [authGuard] },
   { path: 'character-management', component: CharacterManagementComponent },
   { path: 'resources', component: ResourcesComponent },
   { path: 'rpg-worlds', component: RpgWorldsComponent },

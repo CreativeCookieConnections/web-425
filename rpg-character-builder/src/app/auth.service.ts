@@ -20,8 +20,8 @@ export class AuthService {
 
   constructor(private cookieService: CookieService, private router: Router) {
     this.users = [
-      { empId: 1007, email: 'giggleflowers@testing.com', password: 'trusthonesty202' },
-      { empId: 1008, email: 'fluentwizard@testing.com', password: 'everytime460'},
+      { empId: 1007, email: 'giggleflowers@testing.com', password: 'Trusthonesty202' },
+      { empId: 1008, email: 'fluentwizard@testing.com', password: 'Everytime460'},
       { empId: 1009, email: 'potionwarrior@testing.com', password: 'Godude503' },
       { empId: 1010, email: 'mysticaldemon@testing.com', password: 'Ducks002' },
       { empId: 1011, email: 'hotchipsanddip@testing.com', password: 'Food123' },
