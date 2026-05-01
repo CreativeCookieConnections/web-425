@@ -25,7 +25,7 @@ describe('AuthService', () => {
   });
 
   it('should set cookie and authState to true on successful signin', () => {
-    const result = service.signin('wizardlywand@hogwarts', 'Alohomora123');
+    const result = service.signin('wizardlywand@hogwarts.com', 'Alohomora123');
     expect(result).toBeTrue();
     expect(service.getAuthState().subscribe(state => expect(state).toBeTrue()));
     expect(cookieServiceSpy.set.calls.count()).toBe(1);
