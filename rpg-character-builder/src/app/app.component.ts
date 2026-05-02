@@ -134,6 +134,8 @@ export class AppComponent {
     this.authService.getAuthState().subscribe((isAuth) => {
       if(isAuth) {
         this.email = this.cookieService.get('session_user');
+      } else {
+        this.email = undefined;
       }
     });
   }
