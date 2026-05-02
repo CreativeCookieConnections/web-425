@@ -22,7 +22,7 @@ describe('AuthService', () => {
   });
 
   it('should set cookie and authState to true on successful sign in', (done) => {
-    const result = service.signin('giggleflowers@testing.com', 'trusthonesty202');
+    const result = service.signin('giggleflowers@testing.com', 'Trusthonesty202');
     expect(result).toBeTrue();
     expect(cookieServiceSpy.set.calls.count()).toBe(1);
     
