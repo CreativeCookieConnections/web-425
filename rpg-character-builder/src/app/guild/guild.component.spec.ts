@@ -24,26 +24,23 @@ describe('GuildComponent', () => {
   });
 
   it('form should prevent submission if the form is invalid', () => {
-    const submitButton = fixture.debugElement.query(By.css('button[type="submit"]'));
-    submitButton.nativeElement.click();
-    expect(component.guildForm.valid).toBeFalsy();
+    const submitButton = fixture.debugElement.query(By.css('input[type="submit"]'));
+    expect(submitButton.nativeElement.disabled).toBeTruthy();
   });
 
   it('form should be valid when all fields are filled', () => {
     component.guildForm.controls['name'].setValue('Test Guild');
     component.guildForm.controls['description'].setValue('A test guild for testing purposes.');
-    component.guildForm.controls['type'].setValue('Public');
-    component.guildForm.controls['acceptTerms'].setValue(true);
     component.guildForm.controls['notificationPreference'].setValue('email');
+    fixture.detectChanges();
     expect(component.guildForm.valid).toBeTruthy();
   });
 
   it('form should be invalid when required fields are not filled', () => {
     component.guildForm.controls['name'].setValue('');
     component.guildForm.controls['description'].setValue('');
-    component.guildForm.controls['type'].setValue('');
-    component.guildForm.controls['acceptTerms'].setValue(false);
     component.guildForm.controls['notificationPreference'].setValue('');
+    fixture.detectChanges();
     expect(component.guildForm.valid).toBeFalsy();
   });
 
@@ -51,11 +48,10 @@ describe('GuildComponent', () => {
     const createGuildSpy = spyOn(component, 'createGuild');
     component.guildForm.controls['name'].setValue('Test Guild');
     component.guildForm.controls['description'].setValue('A test guild for testing purposes.');
-    component.guildForm.controls['type'].setValue('Public');
-    component.guildForm.controls['acceptTerms'].setValue(true);
     component.guildForm.controls['notificationPreference'].setValue('email');
+    fixture.detectChanges();
     
-    const submitButton = fixture.debugElement.query(By.css('button[type="submit"]'));
+    const submitButton = fixture.debugElement.query(By.css('input[type="submit"]'));
     submitButton.nativeElement.click();
     
     expect(createGuildSpy).toHaveBeenCalled();
