@@ -27,7 +27,7 @@ export const routes: Routes = [
   { path: 'resources', component: ResourcesComponent },
   { path: 'rpg-worlds', component: RpgWorldsComponent },
   { path: 'community', component: CommunityComponent },
-  { path: 'guild', component: GuildComponent },
+  { path: 'guild', component: GuildComponent, canActivate: [authGuard] },
   { path: 'news', component: NewsComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'support', component: SupportComponent }
