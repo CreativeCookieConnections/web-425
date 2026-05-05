@@ -12,19 +12,20 @@ export interface Order {
   orderId: number;
 }
 
-import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { OrderSummaryComponent } from "../order-summary/order-summary.component";
 
 @Component({
   selector: 'app-order',
   standalone: true,
-  imports: [FormsModule, CommonModule],
   template: `
   <div class="order-form-container">
     <form class="order-form" #tacoOrderForm="ngForm"
     (ngSubmit)="addToOrder();">
       <h1> Complete the form below to place a new order. </h1>
+
       <fieldset>
         <legend> My Order </legend>
         <label for="tacoType"> Taco Type </label>
@@ -40,7 +41,7 @@ import { CommonModule } from '@angular/common';
         [(ngModel)]="quantity" ngModel>
 
         <div class="customization-section">
-        <label> Customize</label>
+        <label>Customize</label>
 
         <div class="customization-option">
           <input type="checkbox" id="noOnions" name="noOnions"
@@ -60,31 +61,8 @@ import { CommonModule } from '@angular/common';
     </form>
 
     <div class="order-summary">
-    <h1> Order Summary </h1>
+    <app-order-summary [order]="order"></app-order-summary>
 
-    @if (order.tacos.length > 0) {
-    <ul>
-      @for (taco of order.tacos; track taco) {
-      <li>
-        <strong>{{ taco.quantity }}x {{ taco.name }}</strong>
-        <br/>
-        Price per taco: {{ taco.price | currency:'USD':'symbol':'1.2-2' }}
-        <br/>
-        @if(taco.noOnions) {
-        No onions
-        <br/>
-        }
-        @if(taco.noCilantro) {
-        No cilantro
-        <br/>
-        }
-      </li>
-      }
-    </ul>
-    <p><strong>Total:</strong> {{ getTotal() | currency:'USD':'symbol':'1.2-2' }}</p>
-} @else {
-      <p>No tacos to the order yet.</p>
-    }
   </div>
 </div>
 
@@ -107,7 +85,7 @@ import { CommonModule } from '@angular/common';
     }
 
     fieldset {
-    bottom: 20px;
+    margin-bottom: 20px;
     }
 
     label, select, qty-input {
@@ -125,7 +103,7 @@ import { CommonModule } from '@angular/common';
     }
 
     .qty-input {
-    width: 100%;
+    width: 20%;
     }
 
     input[type="submit"] {
@@ -146,12 +124,17 @@ import { CommonModule } from '@angular/common';
     margin-right: 5px;
     }
 
+    /*
+    // Removed this from the original styling
     .order-summary li {
     margin-bottom: 10px;
     padding: 5px;
     }
+    */
     `
-  ]
+  ],
+
+  imports: [FormsModule, CommonModule, OrderSummaryComponent]
 })
 
 export class OrderComponent {
@@ -162,6 +145,8 @@ export class OrderComponent {
   noOnions: boolean = false;
   noCilantro: boolean = false;
   orderTotal: number;
+
+  @Output() orderUpdated = new EventEmitter<Order>();
 
   constructor() {
     this.tacos = [
@@ -204,14 +189,12 @@ export class OrderComponent {
       this.order.tacos.push(tacoToAdd);
       console.log('Order after adding', this.order);
 
+      this.orderUpdated.emit(this.order);
+
       this.resetForm();
     } else {
       console.error('Taco no found in the list of available tacos.', this.selectedTacoId)
     }
-  }
-
-  getTotal() {
-    return this.order.tacos.reduce((acc, taco) => acc + (taco.price * (taco.quantity ?? 1)), 0);
   }
 
   resetForm() {
