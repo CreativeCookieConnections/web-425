@@ -56,7 +56,7 @@ import { OrderSummaryComponent } from "../order-summary/order-summary.component"
       </form>
 
       <div class="order-summary">
-        <app-order-summary [order]="order"></app-order-summary>
+        <app-order-summary [order]="order" (tacoRemoved)="onTacoRemoved($event)"></app-order-summary>
       </div>
     </div>
   `,
@@ -194,5 +194,21 @@ export class OrderComponent {
     this.quantity = 1;
     this.noOnions = false;
     this.noCilantro = false;
+  }
+
+  onTacoRemoved(taco: Taco) {
+    const index = this.order.tacos.findIndex(t => 
+      t.id === taco.id && 
+      t.name === taco.name && 
+      t.price === taco.price &&
+      t.noOnions === taco.noOnions &&
+      t.noCilantro === taco.noCilantro
+    );
+
+    if (index > -1) {
+      this.order.tacos.splice(index, 1);
+      this.order = { ...this.order };
+      this.orderUpdated.emit(this.order);
+    }
   }
 }
