@@ -43,6 +43,7 @@ import { Taco } from '../order/order.component';
   }
   `,
   styles: `
+  // Styles for the order summary component
     li.order-line-item {
       margin-bottom: 15px;
       padding: 12px;
@@ -117,6 +118,8 @@ import { Taco } from '../order/order.component';
     }
   `
 })
+
+/* The OrderSummaryComponent is responsible for displaying the current order summary, including the list of tacos in the order, their quantities, prices, and any customizations. It also calculates the total cost of the order and allows users to remove individual tacos from the order. The component uses Angular's @Input decorator to receive the current order from its parent component and @Output to emit events when a taco is removed. The template includes conditional rendering to handle cases where there are no tacos in the order, and it formats prices using Angular's currency pipe for better readability. The styles are designed to create a clean and user-friendly interface for the order summary. */
 export class OrderSummaryComponent {
   @Input() order!: Order;
   @Output() tacoRemoved = new EventEmitter<Taco>();
@@ -124,6 +127,8 @@ export class OrderSummaryComponent {
   getTotal() {
     return this.order.tacos.reduce((acc, taco) => acc + (taco.price * (taco.quantity ?? 1)), 0);
   }
+
+  // This method is called when the "Remove Taco" button is clicked for a specific taco in the order summary. It emits an event with the taco to be removed, which allows the parent component to handle the removal logic and update the order accordingly.
 
   removeTaco(taco: Taco) {
     this.tacoRemoved.emit(taco);
