@@ -196,6 +196,8 @@ export class OrderComponent {
     this.noCilantro = false;
   }
 
+  /* This method is called when a taco is removed from the order summary. It finds the taco in the order's tacos array and removes it, then emits the updated order to the parent component. The findIndex method is used to locate the taco based on its properties, ensuring that the correct taco is removed even if there are multiple tacos with the same name or price. After removing the taco, we create a new order object to trigger change detection in Angular, which will update the order summary component accordingly. Finally, we emit the updated order so that any parent components can react to the change. */
+
   onTacoRemoved(taco: Taco) {
     const index = this.order.tacos.findIndex(t => 
       t.id === taco.id && 
@@ -205,6 +207,7 @@ export class OrderComponent {
       t.noCilantro === taco.noCilantro
     );
 
+    // If the taco is found in the order, remove it and emit the updated order
     if (index > -1) {
       this.order.tacos.splice(index, 1);
       this.order = { ...this.order };
