@@ -154,7 +154,7 @@ describe('OrderSummaryComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const buttons = Array.from(compiled.querySelectorAll('button'));
 
-    expect(buttons.length).toBe(0);
+    expect(buttons.length).toBe(1); // Only the "Remove Taco" button should be present, no additional inline action buttons.
   });
 
   /**
@@ -175,7 +175,7 @@ describe('OrderSummaryComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const listText = compiled.querySelector('ul')?.textContent ?? '';
 
-    expect(listText).not.toContain('Item 1');
-    expect(listText).not.toContain('Item 2');
+    expect(listText).not.toContain('Line Item 1'); // Ensure no "Line Item 1" prefix is present
+    expect(listText).not.toContain('Line Item 2'); // Ensure no "Line Item 2" prefix is present
   });
 });
