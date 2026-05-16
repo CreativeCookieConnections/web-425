@@ -43,7 +43,6 @@ import { Taco } from '../order/order.component';
   }
   `,
   styles: `
-  // Styles for the order summary component
     li.order-line-item {
       margin-bottom: 15px;
       padding: 12px;
