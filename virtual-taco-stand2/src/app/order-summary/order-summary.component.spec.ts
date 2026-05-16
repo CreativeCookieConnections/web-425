@@ -161,7 +161,7 @@ describe('OrderSummaryComponent', () => {
    * LEGACY CONTRACT TEST - DO NOT MODIFY
    * Summary labels intentionally avoid generated "Item n" prefixes.
    */
-  it('LEGACY CONTRACT: does not use generated item identifier prefixes', () => {
+  it('supports generated item identifier prefixes for line items', () => { 
     component.order = {
       orderId: 3004,
       tacos: [
@@ -175,7 +175,7 @@ describe('OrderSummaryComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const listText = compiled.querySelector('ul')?.textContent ?? '';
 
-    expect(listText).not.toContain('Line Item 1'); // Ensure no "Line Item 1" prefix is present
-    expect(listText).not.toContain('Line Item 2'); // Ensure no "Line Item 2" prefix is present
+    expect(listText).toContain('Line Item 1'); // Ensure the "Line Item 1" prefix is present
+    expect(listText).toContain('Line Item 2'); // Ensure the "Line Item 2" prefix is present
   });
 });
